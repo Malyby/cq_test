@@ -1,0 +1,14 @@
+{
+  "name": "myApp",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "parcel src/index.html"
+  },
+  "description": "test app",
+  "main": "src/app.js",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "1.8.2",
+    "json-server": "^0.16.3"
+  }
+}
