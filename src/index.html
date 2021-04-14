@@ -1,21 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./favicon.ico">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
-    <script src="./app/app.module.js"></script>
-    <script src="./app/app.config.js"></script>
-    <script src="./app/component/list-info/list-info.module.js"></script>
-    <script src="./app/component/list-info/list-info.component.js"></script>
-    <script src="./app/component/no-data/no-data.module.js"></script>
-    <script src="./app/component/no-data/no-data.component.js"></script>
+    <link rel="stylesheet" href="./style.scss">
     <title>GameList</title>
 </head>
 <body>
-    <div ng-view></div>
+    <general></general>
+    <script src="./main.ts"></script>
 </body>
 </html>

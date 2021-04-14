@@ -1,0 +1,45 @@
+<div class="modal fade" id="formDeletePlayer" tabindex="-1" aria-labelledby="formDeletePlayer" aria-hidden="true">
+  <div class="modal-dialog">
+    <form class="modal-content needs-validation" name="formDeletePlayer" ng-submit="deletePlayer()">
+      <div class="modal-header">
+        <h5 class="modal-title">Удаление Игрока</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ng-click="reset()"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <label class="mb-2" for="nickname">Введите имя игрока <b>{{loadNickname}}</b> для удаления</label>
+          <input 
+            id="nickname"
+            type="text"
+            name="nickname"
+            class="form-control mb-2"
+            placeholder="Имя игрока"
+            required
+            ng-model-options="{updateOn: 'input'}"
+            ng-model="nickname"
+            ng-class="{'is-invalid': (formDeletePlayer.nickname.$error.required || formDeletePlayer.nickname.$error.checkEqualNickname) && formDeletePlayer.nickname.$touched}"
+            validate-equal-nickname
+          >
+          <span class="invalid-feedback mb-2" ng-show="formDeletePlayer.nickname.$error.required && formDeletePlayer.nickname.$touched">
+            Обязательное поле
+          </span>
+          <span class="invalid-feedback mb-2" ng-show="formDeletePlayer.nickname.$error.checkEqualNickname && formDeletePlayer.nickname.$touched">
+            Имя не совпадает
+          </span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button 
+          type="submit"
+          class="btn btn-dark mx-auto"
+          data-bs-dismiss="modal" 
+          aria-label="Close"
+          ui-sref="players"
+          ng-disabled="formDeletePlayer.$invalid"
+        >
+          Удалить
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

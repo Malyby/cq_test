@@ -1,0 +1,18 @@
+<div class="layout pt-5 pb-4">
+    <div class="games row pt-4 pb-4">
+        <div class="col-xs-12 col-sm-6 col-lg-4" ng-model="games" ng-repeat="game in games">
+            <div class="game card my-2" ng-class="{not_available: checkDateRelease(game.date_release)}">
+                <img src="https://upload.wikimedia.org/wikipedia/ru/b/bf/Days_Gone_game_cover.jpeg" class="card-img-top" alt="game_photo">
+                <div class="card-body">
+                    <h5 class="card-title m-0">{{game.name}}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Жанр:</b> {{game.genre}}</li>
+                    <li class="list-group-item"><b>Дата релиза:</b> {{game.date_release | date:'dd.MM.yyyy'}}</li>
+                    <li class="list-group-item"><b>Платформа:</b> {{game.platform}}</li>
+                    <li class="list-group-item"><b>Возрастной рейтинг:</b> {{game.rating}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,146 @@
+<div class="modal fade" id="formEditPlayer" tabindex="-1" aria-labelledby="formEditPlayer" aria-hidden="true">
+  <div class="modal-dialog">
+    <form class="modal-content needs-validation" name="formEditPlayer" ng-submit="updatePlayer()" ng-show="!editPlayer">
+      <div class="modal-header">
+        <h5 class="modal-title">Редактирование Игрока</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ng-click="reset()"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <input 
+            type="text"
+            name="nickname"
+            class="form-control mb-2"
+            placeholder="Имя пользователя"
+            required
+            ng-model-options="{updateOn: 'blur'}"
+            ng-model="nickname"
+            ng-pattern="/^\w+$/"
+            ng-class="{'is-invalid': (formEditPlayer.nickname.$error.pattern || formEditPlayer.nickname.$error.required || formEditPlayer.nickname.$error.checkUniqueNickname) && formEditPlayer.nickname.$touched }"
+            validate-unique-nickname
+          >
+          <span class="invalid-feedback mb-2" ng-show="formEditPlayer.nickname.$error.pattern">
+            Только латинские буквы, цифры и знак "_"
+          </span>
+          <span class="invalid-feedback mb-2" ng-show="formEditPlayer.nickname.$error.required && formEditPlayer.nickname.$touched">
+            Обязательное поле
+          </span>
+          <span class="invalid-feedback mb-2" ng-show="formEditPlayer.nickname.$error.checkUniqueNickname && formEditPlayer.nickname.$touched">
+            Этот никнейм уже занят
+          </span>
+        </div>
+        <div>
+          <input 
+            type="text"
+            name="age"
+            class="form-control mb-2"
+            placeholder="Возраст"
+            required
+            ng-model="age"
+            ng-pattern="/^\d{1,2}$/"
+            ng-class="{'is-invalid': formEditPlayer.age.$error.pattern || formEditPlayer.age.$error.required && formEditPlayer.age.$touched}"
+          >
+          <span class="invalid-feedback mb-2" ng-show="formEditPlayer.age.$error.pattern">
+            Возраст от 0 до 99
+          </span>
+          <span class="invalid-feedback mb-2" ng-show="formEditPlayer.age.$error.required && formEditPlayer.age.$touched">
+            Обязательное поле
+          </span>
+        </div>
+        <div>
+          <input 
+            type="tel"
+            name="phone"
+            class="form-control mb-2"
+            placeholder="Телефон"
+            required
+            ng-model-options="{updateOn: 'blur'}"
+            ng-model="phone"
+            ng-pattern="/^\+7\d{10}$/"
+            ng-class="{'is-invalid': (formEditPlayer.phone.$error.pattern || formEditPlayer.phone.$error.required || formEditPlayer.phone.$error.checkPhone) && formEditPlayer.phone.$touched}"
+            validate-unique-phone
+          >
+          <span class="invalid-feedback mb-2" ng-show="formEditPlayer.phone.$error.pattern">
+            Формат телефон +79999999999
+          </span>
+          <span class="invalid-feedback mb-2" ng-show="formEditPlayer.phone.$error.required && formEditPlayer.phone.$touched">
+            Обязательное поле
+          </span>
+          <span class="invalid-feedback mb-2" ng-show="formEditPlayer.phone.$error.checkPhone && formEditPlayer.phone.$touched">
+            Этот телефон уже занят
+          </span>
+        </div>
+        <div>
+          <input 
+            type="email"
+            name="email"
+            class="form-control mb-2" 
+            placeholder="Email"
+            required
+            ng-model-options="{updateOn: 'blur'}"
+            ng-model="email"
+            ng-pattern="/^[\w_\-\.]+@[\w_\-\.]+\.[a-zA-Z]{2,4}$/"
+            ng-class="{'is-invalid': (formEditPlayer.email.$error.pattern || formEditPlayer.email.$error.required || formEditPlayer.email.$error.checkEmail) && formEditPlayer.email.$touched}"
+            validate-unique-email
+          >
+          <span class="invalid-feedback mb-2" ng-show="formEditPlayer.email.$error.pattern">
+            Неверный формат
+          </span>
+          <span class="invalid-feedback mb-2" ng-show="formEditPlayer.email.$error.required && formEditPlayer.email.$touched">
+            Обязательное поле
+          </span>
+          <span class="invalid-feedback mb-2" ng-show="formEditPlayer.email.$error.checkEmail && formEditPlayer.email.$touched">
+            Этот email уже занят
+          </span>
+        </div>
+        <div>
+          <select 
+            class="form-select" 
+            name="platform" 
+            required 
+            ng-model="platform"
+            ng-class="{'is-invalid': formEditPlayer.platform.$error.required && formEditPlayer.platform.$touched}"
+          >
+          <option value="" disabled selected>Платформа</option>
+          <option value="PC">PC</option>
+          <option value="PS">PS</option>
+          <option value="Xbox">Xbox</option>
+          <option value="Nintendo Switch">Nintendo Switch</option>
+        </select>
+        <span class="invalid-feedback mb-2" ng-show="formEditPlayer.platform.$error.required && formEditPlayer.platform.$touched">
+          Обязательное поле
+        </span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button 
+          type="submit"
+          class="btn btn-dark mx-auto"
+          ng-disabled="formEditPlayer.$invalid || formEditPlayer.$pristine"
+        >
+          Сохранить
+        </button>
+      </div>
+    </form>
+      <!--Состояние успеха-->
+      <div class="modal-content" ng-show="editPlayer">
+        <div class="modal-header">
+          Сохранено!
+        </div>
+        <div class="modal-body text-center">
+          <img src="/assets/icon/success.svg" alt="success">
+        </div>
+        <div class="modal-footer">
+          <button 
+            type="button"
+            class="btn btn-dark mx-auto"
+            data-bs-dismiss="modal" 
+            aria-label="Close"
+            ng-click="editPlayer = false"
+          >
+            Ок
+          </button>
+        </div>
+      </div>
+  </div>
+</div>

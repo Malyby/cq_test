@@ -41,6 +41,7 @@ yarn-error.log
 testem.log
 /typings
 /.cache
+/.build
 
 # System Files
 .DS_Store
