@@ -1,0 +1,140 @@
+<div class="modal fade" id="formPlayer" tabindex="-1" aria-labelledby="formPlayer" aria-hidden="true">
+  <div class="modal-dialog">
+    <form class="modal-content needs-validation" name="formPlayer" ng-submit="createPlayer()" ng-show="!addPlayer">
+      <div class="modal-header">
+        <h5 class="modal-title">Добавление Игрока</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ng-click="resetForm()"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <input 
+            type="text"
+            name="nickname"
+            class="form-control mb-2"
+            placeholder="Имя пользователя"
+            required
+            ng-model-options="{updateOn: 'blur'}"
+            ng-model="nickname"
+            ng-pattern="/^\w+$/"
+            ng-class="{'is-invalid': formPlayer.nickname.$error.pattern || formPlayer.nickname.$error.required && formPlayer.nickname.$touched || formPlayer.nickname.$error.checkNickname}"
+            validate-unique-nickname
+          >
+          <span class="invalid-feedback mb-2" ng-show="formPlayer.nickname.$error.pattern">
+            Только латинские буквы, цифры и знак "_"
+          </span>
+          <span class="invalid-feedback mb-2" ng-show="formPlayer.nickname.$error.required && formPlayer.nickname.$touched">
+            Обязательное поле
+          </span>
+          <span class="invalid-feedback mb-2" ng-show="formPlayer.nickname.$error.checkNickname">
+            Этот никнейм уже занят
+          </span>
+        </div>
+        <div>
+          <input 
+            type="text"
+            name="age"
+            class="form-control mb-2"
+            placeholder="Возраст"
+            required
+            ng-model="age"
+            ng-pattern="/^\d{1,2}$/"
+            ng-class="{'is-invalid': formPlayer.age.$error.pattern || formPlayer.age.$error.required && formPlayer.age.$touched}"
+          >
+          <span class="invalid-feedback mb-2" ng-show="formPlayer.age.$error.pattern">
+            Возраст от 0 до 99
+          </span>
+          <span class="invalid-feedback mb-2" ng-show="formPlayer.age.$error.required && formPlayer.age.$touched">
+            Обязательное поле
+          </span>
+        </div>
+        <div>
+          <input 
+            type="tel"
+            name="phone"
+            class="form-control mb-2"
+            placeholder="Телефон"
+            required
+            ng-model-options="{updateOn: 'blur'}"
+            ng-model="phone"
+            ng-pattern="/^\+7\d{10}$/"
+            ng-class="{'is-invalid': formPlayer.phone.$error.pattern || formPlayer.phone.$error.required && formPlayer.phone.$touched || formPlayer.phone.$error.checkPhone}"
+            validate-unique-phone
+          >
+          <span class="invalid-feedback mb-2" ng-show="formPlayer.phone.$error.pattern">
+            Формат телефон +79999999999
+          </span>
+          <span class="invalid-feedback mb-2" ng-show="formPlayer.phone.$error.required && formPlayer.phone.$touched">
+            Обязательное поле
+          </span>
+          <span class="invalid-feedback mb-2" ng-show="formPlayer.phone.$error.checkPhone">
+            Этот телефон уже занят
+          </span>
+        </div>
+        <div>
+          <input 
+            type="email"
+            name="email"
+            class="form-control mb-2" 
+            placeholder="Email"
+            required
+            ng-model-options="{updateOn: 'blur'}"
+            ng-model="email"
+            ng-pattern="/^[\w_\-\.]+@[\w_\-\.]+\.[a-zA-Z]{2,4}$/"
+            ng-class="{'is-invalid': formPlayer.email.$error.pattern || formPlayer.email.$error.required && formPlayer.email.$touched  || formPlayer.email.$error.checkEmail}"
+            validate-unique-email
+          >
+          <span class="invalid-feedback mb-2" ng-show="formPlayer.email.$error.pattern">
+            Неверный формат
+          </span>
+          <span class="invalid-feedback mb-2" ng-show="formPlayer.email.$error.required && formPlayer.email.$touched">
+            Обязательное поле
+          </span>
+          <span class="invalid-feedback mb-2" ng-show="formPlayer.email.$error.checkEmail">
+            Этот email уже занят
+          </span>
+        </div>
+        <div>
+          <select 
+            class="form-select" 
+            name="platform" 
+            required 
+            ng-model="platform"
+            ng-class="{'is-invalid': formPlayer.platform.$error.required && formPlayer.platform.$touched}"
+          >
+          <option value="" disabled selected>Платформа</option>
+          <option value="PC">PC</option>
+          <option value="PS">PS</option>
+          <option value="Xbox">Xbox</option>
+          <option value="Nintendo Switch">Nintendo Switch</option>
+        </select>
+        <span class="invalid-feedback mb-2" ng-show="formPlayer.platform.$error.required && formPlayer.platform.$touched">
+          Обязательное поле
+        </span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-dark mx-auto">Добавить</button>
+      </div>
+    </form>
+    <!--Состояние успеха-->
+    <div class="modal-content" ng-show="addPlayer">
+      <div class="modal-header">
+        Игрок Добавлен
+      </div>
+      <div class="modal-body text-center">
+        <img src="/assets/icon/success.svg" alt="success">
+      </div>
+      <div class="modal-footer">
+        <button 
+          type="button"
+          class="btn btn-dark mx-auto"
+          data-bs-dismiss="modal" 
+          aria-label="Close"
+          ng-click="resetForm()"
+        >
+          Ок
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

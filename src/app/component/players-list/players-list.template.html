@@ -1,0 +1,29 @@
+<div class="layout pt-5 pb-4">
+    <form class="search d-flex flex-start">
+        <input class="form-control me-2" placeholder="Поиск..." ng-model="searchText" name="searchText">
+        <button class="btn btn-outline-success" type="button" ng-click="search()">Поиск</button>
+    </form>
+    <button type="button" class="btn btn-dark mt-4" data-bs-toggle="modal" data-bs-target="#formPlayer">
+        Добавить игрока
+    </button>
+    <create-player></create-player>
+    <div class="players row pt-4 pb-4">
+        <div class="col-xs-12 col-sm-6 col-lg-4" ng-model="players" ng-repeat="player in players">
+            <div class="player card my-2">
+                <img src="https://natalyland.ru/wp-content/uploads/4/7/8/4783b8df99d74b7cf40980b65d8061db.jpeg" class="card-img-top" alt="player_photo">
+                <div class="card-body">
+                    <h5 class="card-title m-0">{{player.nickname}}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Возраст:</b> {{player.age}}</li>
+                    <li class="list-group-item"><b>Телефон:</b> {{player.phone}}</li>
+                    <li class="list-group-item"><b>Email:</b> {{player.email}}</li>
+                    <li class="list-group-item"><b>Платформа:</b> {{player.platform}}</li>
+                </ul>
+                <div class="card-body">
+                    <a ui-sref="player({id: {{player.id}}})" class="btn btn-dark">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

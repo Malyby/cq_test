@@ -1,0 +1,20 @@
+games-list {
+    .layout {
+        width: 100%;
+        max-width: 1024px;
+        margin: auto;
+        .game {
+            transition: 0.4s;
+            -webkit-transition: 0.4s;
+            -moz-transition: 0.4s;
+            -ms-transition: 0.4s;
+            -o-transition: 0.4s;
+        }
+        .game:hover {
+            box-shadow: 0 0 30px rgba(0,0,0,.3);
+        }
+        .not_available {
+            opacity: 0.5;
+        }
+    }
+}

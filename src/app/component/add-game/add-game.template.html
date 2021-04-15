@@ -1,0 +1,55 @@
+<div class="modal fade" id="formAddGame" tabindex="-1" aria-labelledby="formAddGame" aria-hidden="true">
+  <div class="modal-dialog">
+    <form class="modal-content needs-validation" name="formAddGame" ng-submit="addGame(game.id)" ng-show="!appendGame">
+      <div class="modal-header">
+        <h5 class="modal-title">Добавлени Игры</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ng-click="reset()"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <select 
+            class="form-select" 
+            name="game" 
+            required 
+            ng-model="game"
+            ng-options="game.name for game in games track by game.id"
+            ng-class="{'is-invalid': formAddGame.game.$error.required && formAddGame.game.$touched}"
+          >
+            <option value="">Выбрать игру</option>
+          </select>
+          <span class="invalid-feedback mb-2" ng-show="formAddGame.game.$error.required && formAddGame.game.$touched">
+            Обязательное поле
+          </span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button 
+          type="submit"
+          class="btn btn-dark mx-auto"
+          ng-disabled="formAddGame.$invalid"
+        >Добавить</button>
+      </div>
+    </form>
+    <!--Состояние успеха-->
+    <div class="modal-content" ng-show="appendGame">
+      <div class="modal-header">
+        Игра Добавлена!!!
+      </div>
+      <div class="modal-body text-center">
+        <img src="/assets/icon/success.svg" alt="success">
+      </div>
+      <div class="modal-footer">
+        <button 
+          type="button"
+          class="btn btn-dark mx-auto"
+          data-bs-dismiss="modal" 
+          aria-label="Close"
+          ng-model-options="{ debounce: 1000 }"
+          ng-click="reset()"
+        >
+          Хорошо!
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
